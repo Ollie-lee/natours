@@ -1,4 +1,6 @@
 .card {
+    //functionality
+
     //set perspective to user
     perspective: 150rem;
     -moz-perspective: 150rem;
@@ -6,11 +8,11 @@
     //all children is absolute
     //taken from normal text flow
     //but we can not use clear fix, so we set height
-    height: 50rem;
+    height: 53rem;
 
     &__side {
         background-color: orangered;
-        height: 50rem;
+        height: 53rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
@@ -22,6 +24,8 @@
         //it basically hides the back part of an element.
         backface-visibility: hidden;
         border-radius: 3px;
+        //maintain background-image's corner, keep radius
+        overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color: #000000, $alpha: .15);
 
 
@@ -34,8 +38,9 @@
             //it's already 180 degrees on the back.
             //And then as soon as we hover the card,
             //then it moves to zero.
+            //which means it's backface 
             background-color: green;
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
 
             &-1 {
                 //set specific color
@@ -51,5 +56,74 @@
 
     &:hover &__side--back {
         transform: rotateY(0);
+    }
+
+
+    //frontend side styling
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        //blend two images(one image+one gradient color)
+        background-blend-mode: screen;
+        //cut the image to polygon
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url(../../img/nat-5.jpg );
+        }
+
+        &--2 {
+            background-image: url(../../img/nat-5.jpg );
+        }
+
+        &--3 {
+            background-image: url(../../img/nat-5.jpg );
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        //treat a broken text as two separated elements
+        box-decoration-break: clone;
+
+        //new element, so not nested
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+        ul {
+            list-style: none;
+            //make border underline 80%
+            width: 80%;
+            //center a block element in a block element
+            margin:0 auto;
+
+            li{
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                //not apply to the last element
+                &:not(:last-child){
+                    border-bottom: 1px solid $color-gray-light-2;
+                }
+            }
+        }
     }
 }
