@@ -11,7 +11,6 @@
     height: 53rem;
 
     &__side {
-        background-color: orangered;
         height: 53rem;
         transition: all .8s ease;
         position: absolute;
@@ -39,12 +38,19 @@
             //And then as soon as we hover the card,
             //then it moves to zero.
             //which means it's backface 
-            background-color: green;
             transform: rotateY(-180deg);
 
             &-1 {
                 //set specific color
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+            }
+    
+            &-3 {
+                background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
             }
         }
     }
@@ -74,11 +80,11 @@
         }
 
         &--2 {
-            background-image: url(../../img/nat-5.jpg );
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url(../../img/nat-6.jpg );
         }
 
         &--3 {
-            background-image: url(../../img/nat-5.jpg );
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url(../../img/nat-7.jpg );
         }
     }
 
@@ -103,27 +109,57 @@
         &--1 {
             background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
         }
+
+
     }
 
     &__details {
         padding: 3rem;
+
         ul {
             list-style: none;
             //make border underline 80%
             width: 80%;
             //center a block element in a block element
-            margin:0 auto;
+            margin: 0 auto;
 
-            li{
+            li {
                 text-align: center;
                 font-size: 1.5rem;
                 padding: 1rem;
 
                 //not apply to the last element
-                &:not(:last-child){
+                &:not(:last-child) {
                     border-bottom: 1px solid $color-gray-light-2;
                 }
             }
         }
+    }
+
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        //set width, cuz button is adapted to this
+        width: 90%;
+        text-align: center;
+
+    }
+
+    &__price-box {
+        text-align: center;
+        margin-bottom: 8rem;
+        color: $color-white;
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100;
     }
 }
