@@ -22,6 +22,9 @@
         clip-path: circle(50% at 50% 50%);
         //override previous anti skew transform
         transform: translateX(-3rem) skewX(12deg);
+        position: relative;
+        //solve vertical lines
+        overflow: hidden;
     }
 
     &__text {
@@ -31,5 +34,34 @@
 
     &__img {
         height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+        backface-visibility: hidden;
+        
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        //solve text shaking
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        //when story is hovered, caption showed
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
     }
 }

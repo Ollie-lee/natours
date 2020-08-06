@@ -2,10 +2,7 @@
 @import "abstracts/mixin";
 @import "abstracts/variables";
 
-@import "./base/base";
-@import "./base/animation";
-@import "./base/typography";
-@import "./base/utilities";
+
 
 @import "./components/button";
 @import "./components/composition";
@@ -13,6 +10,10 @@
 @import "./components/card";
 @import "./components/story";
 
+@import "./base/base";
+@import "./base/animation";
+@import "./base/typography";
+@import "./base/utilities";
 
 @import "./layouts/header";
 @import "./layouts/grid";
