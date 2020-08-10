@@ -1,0 +1,66 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color: $color-white, $alpha: .5);
+        border: none;
+        font-family: inherit;
+        //solve when focused, the border-bottom added
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
+        //set input font color
+        color: inherit;
+        transition: all .3s;
+
+        &:focus {
+            //solve blue outline when focused
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: .1);
+            border-bottom: 3px solid rgba($color: $color-primary, $alpha: 1);
+
+            &::placeholder {
+                color: $color-gray-dark-2;
+            }
+
+            
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+        
+    }
+
+
+
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        //make it same as input text's padding
+        margin-left: 2rem;
+        margin-top: .7rem;
+        //inline element, margin/padding only apply horizontally
+        display: block;
+        transition: all .3s;
+    }
+
+    //we do not want to style input, we want to style label
+    //when there is not placeholder, the declaration below will gone
+    &__input:placeholder-shown + &__label{
+        //animate the visibility
+        opacity: 0;
+        //make it gone(still take up the position)
+        //display property will remove the element from layout
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+
+}
