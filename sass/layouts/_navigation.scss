@@ -1,10 +1,10 @@
-.navigation{
+.navigation {
 
-    &__checkbox{
+    &__checkbox {
         display: none;
     }
 
-    &__button{
+    &__button {
         background-color: $color-white;
         height: 7rem;
         width: 7rem;
@@ -15,7 +15,7 @@
         z-index: 2000;
     }
 
-    &__background{
+    &__background {
         height: 6rem;
         width: 6rem;
         border-radius: 50%;
@@ -24,17 +24,67 @@
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
+
+        transform: scale(500);
     }
 
-    &__nav{
-
+    &__nav {
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        //start from top-right corner
+        top: 0;
+        right: 0;
+        z-index: 1500;
     }
 
-    &__item{
-
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
     }
 
-    &__link{
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            //with inline-block can set vertical padding and animation
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            color: $color-white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+
+
+            //hover effect: solid linear-gradient
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            //scale the first and second parameter's color
+            background-size: 220%;
+            transition: all .4s;
+
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+
+        &:hover,
+        &:active {
+            //make linear-gradient's first and second parameter's color show up
+            background-position: 100%;
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+        
 
     }
 }
