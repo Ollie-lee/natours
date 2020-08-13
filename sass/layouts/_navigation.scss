@@ -13,9 +13,14 @@
         right: 6rem;
         border-radius: 50%;
         z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color: $color-black, $alpha: .1);
+        //center the menu button
+        text-align: center;
+        cursor: pointer;
     }
 
     &__background {
+        //initial button is hide behind the button
         height: 6rem;
         width: 6rem;
         border-radius: 50%;
@@ -24,18 +29,22 @@
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
-
-        transform: scale(500);
+        transition: all .8s cubic-bezier(0.86, 0, 0.07, 1);
+        // transform: scale(500);
     }
 
     &__nav {
         height: 100vh;
-        width: 100%;
         position: fixed;
-        //start from top-right corner
+        //start from left-right corner
         top: 0;
-        right: 0;
+        left: 0;
         z-index: 1500;
+        //hide .navigation
+        opacity: 0;
+        width: 0;
+        transition: all .8s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
     }
 
     &__list {
@@ -45,6 +54,7 @@
         transform: translate(-50%, -50%);
         list-style: none;
         text-align: center;
+        width: 100%;
     }
 
     &__item {
@@ -63,7 +73,6 @@
             padding: 1rem 2rem;
             text-decoration: none;
             text-transform: uppercase;
-
 
             //hover effect: solid linear-gradient
             background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
@@ -84,7 +93,76 @@
             color: $color-primary;
             transform: translateX(1rem);
         }
-        
+    }
 
+
+    //make background and navigation show up again 
+    //when checkbox is checked
+    &__checkbox:checked~&__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked~&__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    //icon
+    &__icon {
+        position: relative;
+        top: 50%;
+
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+            background-color: $color-gray-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::after {
+            top: .8rem;
+        }
+
+        &::before {
+            top: -.8rem;
+        }
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox:checked+&__button &__icon {
+        //when we click menu button
+        //the middle hyphen will disappear
+        background-color: transparent;
+    }
+
+    &__checkbox:checked+&__button &__icon::before {
+        //rotate the top hyphen
+        transform: rotate(135deg);
+        //make hyphen back to initial place
+        top: 0;
+    }
+
+    &__checkbox:checked+&__button &__icon::after {
+        //rotate the last hyphen
+        top: 0;
+        transform: rotate(-135deg);
     }
 }
