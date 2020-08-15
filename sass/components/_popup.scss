@@ -6,8 +6,46 @@
     left: 0;
     background-color: rgba($color: $color-black, $alpha: .8);
     z-index: 9999;
+    transition: all .3s;
+
+    //why not use display: none? it disabled animation
+    opacity: 0;
+    //also hide our text, so that which cannot be selected
+    visibility: hidden;
+
+    &:target {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close {
+
+        &:link,
+        &:visited {
+            color: $color-gray-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1;
+        }
+
+        &:hover,
+        &:active {
+            color: $color-primary;
+        }
+    }
 
     &__content {
+        //this transform conflict with transform below
         @include absCenter;
 
         width: 75%;
@@ -17,6 +55,10 @@
         display: table;
         //fix picture overflow radius
         overflow: hidden;
+        opacity: 0;
+        //solve transform conflict
+        transform: translate(-50%, -50%) scale(.5);
+        transition: all .4s .2s;
     }
 
     &__left {
@@ -48,4 +90,6 @@
 
         hyphens: auto;
     }
+
+
 }
