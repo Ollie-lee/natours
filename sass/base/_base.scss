@@ -9,6 +9,11 @@
 html {
     //this defines what 1rem is
     font-size: 10px;
+
+    @include respond-phone {
+        //passed below code into the @content 
+        font-size: 50%;
+    }
 }
 
 body {

@@ -1,3 +1,15 @@
+/*0-600px; Phone
+600-900px: Tablet portrait
+900px-1200px: tablet landscape
+1200px-1800px: normal style apply
+1800px+: big desktop*/
+/*
+$breakpoint argument choices:
+- Phone
+- tab-port
+- tab-land
+- big-desktop
+*/
 .btn, .btn:link, .btn:visited {
   text-transform: uppercase;
   padding: 1.5rem 4rem;
@@ -629,6 +641,12 @@
 
 html {
   font-size: 10px;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
 }
 
 body {
