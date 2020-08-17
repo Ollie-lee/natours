@@ -7,15 +7,45 @@
 }
 
 html {
-    //this defines what 1rem is
+    //this defines what 1rem is, including the below respond()
     font-size: 10px;
 
-    @include respond-phone {
+    //cover by tab-port, which is unnecessary
+    // @include respond(phone) {
+    //     //passed below code into the @content 
+    //     font-size: 50%;//
+    // }
+
+    @include respond(tab-land) {
+        // width < 1200?
         //passed below code into the @content 
-        font-size: 50%;
+        font-size: 56.25%; //1 rem = 9px, so 9/16= 56.25%;
+    }
+
+    @include respond(tab-port) {
+        // width < 900?  put smaller in last declaration
+        //passed below code into the @content 
+        font-size: 50%; //1 rem = 8px, so 8/16= 50%;
+    }
+
+    // @include respond(phone) {
+    //     // width < 600?  put smaller in last declaration
+    //     //passed below code into the @content 
+    //     font-size: 30%; //1 rem = 4.8px, so 8/16= 30%;
+    // }
+
+    @include respond(big-desktop) {
+        //width >1800
+        //passed below code into the @content 
+        font-size: 75%; // 1rem = 12px, 12/16= 75%
     }
 }
 
 body {
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
 }
