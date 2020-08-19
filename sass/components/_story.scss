@@ -23,16 +23,24 @@
         width: 15rem;
         height: 15rem;
         float: left;
-        //make text wrap around the circle
-        //radius at 
-        -webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%);
-        //make background img/color become circle
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
         //override previous anti skew transform
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
+        border-radius: 50%;
+
+        @supports(clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
+            //make background img/color become circle
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            //make text wrap around the circle
+            //radius at 
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            // cancel existing border-radius
+            border-radius: none;
+
+        }
+
         //solve vertical lines
         overflow: hidden;
 
