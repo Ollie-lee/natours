@@ -1,13 +1,14 @@
 .card {
     //functionality
 
-    //set perspective to user
+    //set perspective to user(flip towards to user)
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
     //all children is absolute
     //taken from normal text flow
-    //but we can not use clear fix, so we set height
+    //but we can not use clear fix(here is absolute, not float), so we set height
+    //specify same height with &__side's height
     height: 53rem;
 
     &__side {
@@ -69,8 +70,8 @@
     &__picture {
         background-size: cover;
         height: 23rem;
-        //blend two images(one image+one gradient color)
-        background-blend-mode: screen;
+        //blend two images(one image+one gradient color(unlink header, here it is not opaque))
+        background-blend-mode: soft-light;
         //cut the image to polygon
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
@@ -102,7 +103,7 @@
 
     &__heading-span {
         padding: 1rem 1.5rem;
-        //treat a broken text as two separated elements
+        //treat a broken text as two separated elements(two lines of text)
         box-decoration-break: clone;
 
         //new element, so not nested

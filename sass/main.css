@@ -303,7 +303,7 @@ ORDER of responsive: Base + typography > general layout(header, footer, navigati
 .card__picture {
   background-size: cover;
   height: 23rem;
-  background-blend-mode: screen;
+  background-blend-mode: soft-light;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
