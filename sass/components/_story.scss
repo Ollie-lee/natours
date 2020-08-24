@@ -7,6 +7,7 @@
     padding: 6rem;
     padding-left: 9rem;
     transform: skewX(-12deg);
+    display: table;
 
     @include respond(tab-port) {
         width: 100%;
@@ -27,6 +28,8 @@
         transform: translateX(-3rem) skewX(12deg);
         position: relative;
         border-radius: 50%;
+        display: table-cell;
+        vertical-align: middle;
 
         @supports(clip-path: polygon(0 0) or (-webkit-clip-path: polygon(0 0))) {
             //make background img/color become circle

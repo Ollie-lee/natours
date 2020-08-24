@@ -451,6 +451,7 @@ ORDER of responsive: Base + typography > general layout(header, footer, navigati
   padding-left: 9rem;
   -webkit-transform: skewX(-12deg);
           transform: skewX(-12deg);
+  display: table;
 }
 
 @media only screen and (max-width: 56.25em) {
@@ -476,6 +477,8 @@ ORDER of responsive: Base + typography > general layout(header, footer, navigati
           transform: translateX(-3rem) skewX(12deg);
   position: relative;
   border-radius: 50%;
+  display: table-cell;
+  vertical-align: middle;
   overflow: hidden;
 }
 
